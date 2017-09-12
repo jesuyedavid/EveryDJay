@@ -4,7 +4,7 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/lss/webapp/viewmodel"
+	"EveryDJay/src/github.com/lss/webapp/viewmodel"
 )
 
 type djay struct {
@@ -16,6 +16,6 @@ func (d djay) registerRoutes() {
 }
 
 func (d djay) handleDJay(w http.ResponseWriter, r *http.Request) {
-	vm := viewmodel.NewDjay
+	vm := viewmodel.NewDJay()
 	d.djayTemplate.Execute(w, vm)
 }

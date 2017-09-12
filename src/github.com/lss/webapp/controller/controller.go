@@ -12,11 +12,12 @@ var (
 
 func Startup(templates map[string]*template.Template) {
 	homeController.homeTemplate = templates["home.html"]
-	homeController.standLocatorTemplate = templates["stand_locator.html"]
+	homeController.standLocatorTemplate = templates["standlocator.html"]
 	homeController.loginTemplate = templates["login.html"]
-	djayController.djayTemplate = templates["djay.html"]
+	homeController.djayTemplate = templates["djay.html"]
+	//djayController.djayTemplate = templates["djay.html"]
 	homeController.registerRoutes()
-	djayController.registerRoutes()
+	//djayController.registerRoutes()
 	http.Handle("/img/", http.FileServer(http.Dir("public")))
 	http.Handle("/css/", http.FileServer(http.Dir("public")))
 }

@@ -6,20 +6,28 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/lss/webapp/viewmodel"
+	"EveryDJay/src/github.com/lss/webapp/viewmodel"
 )
 
 type home struct {
 	homeTemplate         *template.Template
 	standLocatorTemplate *template.Template
 	loginTemplate        *template.Template
+	djayTemplate         *template.Template
 }
 
 func (h home) registerRoutes() {
 	http.HandleFunc("/", h.handleHome)
 	http.HandleFunc("/home", h.handleHome)
-	http.HandleFunc("/stand-locator", h.handleStandLocator)
+	http.HandleFunc("/standlocator", h.handleStandLocator)
 	http.HandleFunc("/login", h.handleLogin)
+	http.HandleFunc("/djay", h.handleDjay)
+}
+
+func (h home) handleDjay(w http.ResponseWriter, r *http.Request) {
+	vm := viewmodel.NewDJay()
+	h.djayTemplate.Execute(w, vm)
+
 }
 
 func (h home) handleHome(w http.ResponseWriter, r *http.Request) {

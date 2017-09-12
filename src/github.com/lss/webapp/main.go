@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/lss/webapp/controller"
+	"EveryDJay/src/github.com/lss/webapp/controller"
 )
 
 func main() {
