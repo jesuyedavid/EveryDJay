@@ -1,7 +1,7 @@
 body {
-    background-color: rgb(179, 216, 130);
+    background-color: rgb(223, 209, 209);
     text-align: center;
-    border: 3px solid blue;
+    border: 3px solid rgb(214, 214, 221);
 }
 
 #djSongs{

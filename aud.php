@@ -1,10 +1,3 @@
-<?php
-    $connection=mysqli_connect('localhost', 'root', '');
-    mysqli_select_db($connection,'everydjay');
-    $sql="SELECT * FROM djplaylist";
-    $records=mysqli_query($connection, $sql);
-?>
-
 <!DOCTYPE HTML>  
 <html>
 <head>
@@ -14,26 +7,14 @@
 </head>
 
 <body>
-    <div>
-        <div id="inviteID">
-            Invite ID: <input type="text" name="inviteID">
-            <br><br>   
-            <text id="demo"></text>
-            <input type="submit" name="getInviteID" id="getInviteID" value="Enter">
-        </div>
-
-        <div id="djSongs">
-            Here is your DJ's playlist:
-            <table width="600" border="1" cellpaddin="1" cellspacing="">
-            <tr>
-                <th>inviteID</th>
-                <th>djID</th>
-                <th>songList</th>
-                <th>otherThings</th>
-            </tr>
-            
-            <?php
-            while ($eachrow=mysqli_fetch_assoc($records)){
+    <?php
+        $connection=mysqli_connect('localhost', 'root', '', 'everydjay');
+        $data = $_POST['inviteID'];
+        echo $data;
+        $sql="SELECT * FROM djplaylist WHERE inviteID = '".$data."'";
+        $records=mysqli_query($connection, $sql);
+        if (mysqli_num_rows($records)>0){
+            while ($eachrow=mysqli_fetch_array($records)){
                 echo "<tr>";
                 
                 echo "<td>".$eachrow['inviteID']."</td>";
@@ -42,11 +23,16 @@
                 echo "<td>".$eachrow['otherThings']."</td>";
                                 
                 echo "<tr>";
-            }?>
-            
-            </table>
-        </div>
-    </div>
+            }
+        }else{
+            echo "Not fectching anything from the database";
+        }
+    ?>
+
+    <form method="post">
+        <input type="text" name="inviteID" id="inviteID" placeholder="insert yout inviteID: "><br>
+        <input type="submit" name="submit" value="submit">
+    </form> 
 </body>
 
 </html>
