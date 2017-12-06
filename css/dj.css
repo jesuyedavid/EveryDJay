@@ -1,5 +1,7 @@
 body {
-    background-color: rgb(179, 216, 130);
+    background-color: rgb(14, 15, 15);
+    text-justify: center;
     text-align: center;
+    color: white;
     border: 3px solid blue;
 }

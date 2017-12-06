@@ -1,6 +1,8 @@
-/*$(document).ready(function(){
-    $(":submit").click(function(){
+$(document).ready(function(){
+    /*$("#inviteIDForm").click(function(){
         $("#inviteID").css("display", "none");
-        $("#djSongs").css("display", "block");
-    });
-});*/
+    });*/
+    $("#inviteIDForm").live('click',function(){
+        $(this).parents('form').find('input[type="text"]').val('');
+   });
+});

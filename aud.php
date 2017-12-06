@@ -10,7 +10,6 @@
     <?php
         $connection=mysqli_connect('localhost', 'root', '', 'everydjay');
         $data = $_POST['inviteID'];
-        echo $data;
         $sql="SELECT * FROM djplaylist WHERE inviteID = '".$data."'";
         $records=mysqli_query($connection, $sql);
         if (mysqli_num_rows($records)>0){
@@ -25,13 +24,13 @@
                 echo "<tr>";
             }
         }else{
-            echo "Not fectching anything from the database";
+            echo "Invalid Invite ID";
         }
     ?>
 
-    <form method="post">
-        <input type="text" name="inviteID" id="inviteID" placeholder="insert yout inviteID: "><br>
-        <input type="submit" name="submit" value="submit">
+    <form method="post" id="inviteIDForm">
+        <input type="text" name="inviteID" id="inviteID" placeholder="insert an inviteID here"><br>
+        <input type="submit" name="submit" value="submit" id="inviteIDSubmit">
     </form> 
 </body>
 
