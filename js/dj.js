@@ -1,5 +1,7 @@
 $(document).ready(function(){
-    $("#getdjID").click(function(){
-        $("#djIDform").css('display', '');
+    $("form").submit(function(e){
+        e.preventDefault();
+        await sleep(7000);
+        $(this).hide(1000);
     });
 });
