@@ -8,6 +8,9 @@
 
         <?php
             $connection=mysqli_connect('localhost', 'root', '', 'everydjay');
+            if (!$connection){
+                echo "Not Connected";
+            }
             $DisplayForm=True;
             if(isset($_POST['djID'])){
                 $DisplayForm=False;
