@@ -1,0 +1,14 @@
+version: "3"
+services:
+  web:
+    build: .
+    ports:
+	-"80:80"
+  db:
+    image:wnameless/mysql-phpmyadmin 
+    ports:
+	-"49160:22"
+	-"49161:80"
+	-"49162:3306"
+	
+
