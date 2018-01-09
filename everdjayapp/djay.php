@@ -7,7 +7,7 @@
         <script src="js/dj.js"></script>
 
         <?php
-            $connection=mysqli_connect('localhost:49161', 'root', '', 'everydjay');
+            $connection=mysqli_connect('db', 'root', 'test', 'myDb');
             if (!$connection){
                 echo "Not Connected";
             }

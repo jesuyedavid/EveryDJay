@@ -9,7 +9,7 @@
 
 <body>
     <?php
-        $connection=mysqli_connect('localhost', 'root', '', 'everydjay');
+        $connection=mysqli_connect('db', 'user', 'test', 'myDb');
         $entryForm=False;
         if (isset($_POST['inviteID'])){
             $data=$_POST['inviteID'];
