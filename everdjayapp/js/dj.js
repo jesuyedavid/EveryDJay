@@ -1,8 +1,4 @@
-responseField = document.getElementById('answers');
-
 const renderResponse = (res) => {
-    console.log("we here");
-    // Displays either message depending on results
     if(res.errors){
         document.getElementById('answers').innerHTML = "<p>Sorry, couldn't format your URL.</p><p>Try again.</p>";
     } else {  
@@ -13,7 +9,6 @@ const renderResponse = (res) => {
   
 const getSuggestions = async()=>{    
     const endpoint='https://everydjay-a275.restdb.io/rest/c-2-import-cal-event-sample';
-    //const endpoint='https://api.datamuse.com/words?rel_jja=table'
     try{
       const response=await fetch(endpoint,{
         method:'GET',
@@ -32,5 +27,22 @@ const getSuggestions = async()=>{
     }
 }
 
-getSuggestions()
+creaEveFuncC=()=>{
+    document.getElementById('evelist').style.display="block";
+}
 
+createDone=()=>{
+    document.getElementById('evelist').style.display="none";
+}
+
+//to run our predefined functions
+
+$(document).ready(function() {
+    var el = document.getElementById("creaEveFunc");
+    el.addEventListener('click', creaEveFuncC);
+
+    var doneIn = document.getElementById("doneIn");
+    doneIn.addEventListener('click', createDone);
+
+    getSuggestions()
+});

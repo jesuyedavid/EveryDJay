@@ -8,6 +8,26 @@
     </head>
 
     <body>
+        <div id="djIDform">
+             <form id="inviteID" action="" method="POST">
+                 DJ ID: <input type="text" name="djID">
+                 DJ Username: <input type="text" name="djUsername">
+                 <br><br>   
+                 <text id="demo"></text>
+                 <input type="submit" name="getdjID" id="getdjID" value="Enter">
+             </form>
+        </div>
+        <div id="createEvent">
+            <button id="creaEveFunc">Create Event</button>
+            <form id="evelist" action="" style="display:none" method='POST'>
+                Name: <input type="text"><br><br><!--first and last name of organizer-->
+                Purpose: <input type="text"><br><br><!--birthday, graduation, charity, funeral-->
+                Date:<input type="date"><br><br>
+                Time:<input type="time"><br><br>
+                <button id="doneIn">Done!</button>
+            </form> 
+        </div>
+        
         <div id="answers">
 
         </div>
