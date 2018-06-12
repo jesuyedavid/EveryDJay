@@ -7,7 +7,8 @@ const renderResponse = (res) => {
 }
 
 const generateID=(djname, djpurpose, djdate, djtime)=>{
-    return (djdate+djname+djpurpose+djtime).replace(/\W/g, '')
+    return (djdate.slice(0,2)+djname.slice(0,2)+
+    djpurpose.slice(0,2)+djtime.slice(0,2)).replace(/\W/g, '')
 }
   
 const accessDB = async()=>{ 
@@ -23,6 +24,12 @@ const accessDB = async()=>{
         "Date":djdate,
         "Time":djtime
       });
+    
+    //check to make sure nothing is empty
+    if(djname==""||djdate==""||djpurpose==""||djtime==""){
+        document.getElementById('noinput').innerHTML = "<p>Please fill all input</p>";
+        return
+    }
 
     const endpoint='https://everydjay-a275.restdb.io/rest/eventfromdj';
     try{
@@ -31,7 +38,8 @@ const accessDB = async()=>{
         body: data,
         headers:{
                     'Content-type': 'application/json',
-                    'apikey': "5b1e107f46624c7b24444db4"
+                    //'apikey': "5b1e107f46624c7b24444db4"
+                    'apikey': "526376de89203f9f9644c5da4f07cbd3b847f"
                 }
       });
       if(response.ok){
