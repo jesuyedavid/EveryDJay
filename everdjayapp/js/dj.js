@@ -53,8 +53,49 @@ const accessDB = async()=>{
     createDone();
 }
 
-creaEveFuncC=()=>{
-    document.getElementById('evelist').style.display="block";
+creaEveFuncC=(idtopen)=>{
+    document.getElementById(idtopen).style.display="block";
+}
+
+const closeEvenMenu =(idtoclose)=>{
+    document.getElementById(idtoclose).style.display="none";
+}
+
+const regNewUser=async()=>{
+    var enuser=document.getElementById("enuser").value;
+    var enpass=document.getElementById("enpass").value;
+    if(enpass != document.getElementById("cnfpass").value){
+        document.getElementById("noinput2").innerHTML = "<p>passwords do not match</p>";
+        return;
+    }else{
+        
+        var data = JSON.stringify({
+            "djid": enuser,
+            "djpassword":enpass,
+          });
+    
+        const endpoint='https://everydjay-a275.restdb.io/rest/alldjsonfile';
+        try{
+          const response=await fetch(endpoint,{
+            method:'POST',
+            body: data,
+            headers:{
+                        'Content-type': 'application/json',
+                        //'apikey': "5b1e107f46624c7b24444db4"
+                        'apikey': "526376de89203f9f9644c5da4f07cbd3b847f"
+                    }
+          });
+          if(response.ok){
+            const jsonResponse=await response.json();
+            console.log(jsonResponse);
+          }
+        }
+        catch(error){
+          console.log(error);
+        }
+    }
+
+    
 }
 
 createDone=()=>{
@@ -68,10 +109,10 @@ createDone=()=>{
 //to run our predefined functions
 //after page has loaded
 $(document).ready(function() {
-    var el = document.getElementById("creaEveFunc");
-    el.addEventListener('click', creaEveFuncC);
-
-    var eventfromdj = document.getElementById("doneIn");
-    eventfromdj.addEventListener('click', accessDB);
-
+    document.getElementById("creaEveFunc").addEventListener('click', function(){creaEveFuncC("evelist")});
+    document.getElementById("creadjID").addEventListener('click', function(){creaEveFuncC("newuser")});
+    document.getElementById("doneIn").addEventListener('click', accessDB);
+    document.getElementById("clevelist").addEventListener('click', function(){closeEvenMenu("evelist")});
+    document.getElementById("clreg").addEventListener('click', function(){closeEvenMenu("newuser")});
+    document.getElementById("finreg").addEventListener('click', regNewUser);
 });

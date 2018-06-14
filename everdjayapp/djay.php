@@ -12,19 +12,31 @@
              <form id="inviteID" action="" method="POST">
                  DJ ID: <input type="text" name="djID">
                  DJ Username: <input type="text" name="djUsername">
-                 <br><br>   
                  <text id="demo"></text>
-                 <input type="submit" name="getdjID" id="getdjID" value="Enter">
+                 <input type="submit" name="getdjID" id="getdjID" value="Login">
              </form>
         </div>
+
+        <div>
+            <button id="creadjID">Create ID</button>
+            <div id="newuser" style="display:none">
+                <input type="text" placeholder="enter username" id="enuser">
+                <input type="password" placeholder="enter password" id="enpass">
+                <input type="password" placeholder="confirm password" id="cnfpass">
+                <a href="#" id="clreg"  style="text-decoration: none">Close</a><br>
+                <button id="finreg" >Done!</button><a id="noinput2"></a> 
+            </div>
+        <div>
+        
         <div id="createEvent">
             <button id="creaEveFunc" >Create Event</button>
             <div id="evelist" style="display:none">
                 Name: <input id="djname" type="text" value=""><br><br><!--first  style="display:none" and last name of organizer-->
                 Purpose: <input id="djpurpose" type="text" value=""><br><br><!--birthday, graduation, charity, funeral-->
                 Date:<input id="djdate" type="date" value=""><br><br>
-                Time:<input id="djtime" type="time" value=""><br><br>
-                <button id="doneIn">Done!</button>
+                Time:<input id="djtime" type="time" value="">
+                <a href="#" id="clevelist"  style="text-decoration: none">Close</a><br><br>
+                <button id="doneIn" >Done!</button><a id="noinput"></a>
             </div> 
         </div>
         

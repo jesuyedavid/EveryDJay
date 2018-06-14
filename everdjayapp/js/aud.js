@@ -46,9 +46,7 @@ const getCurPlay = async()=>{
     //document.getElementById('evelist').style.display="none";
 }
 
-const closeEvenMenu =()=>{
-    document.getElementById("evelist").style.display="none";
-}
+
 
 $(document).ready(function() {
     var max_fields      = 10; //maximum input boxes allowed
@@ -71,6 +69,8 @@ $(document).ready(function() {
     var getplaylist = document.getElementById("inviteIDSubmit");
     getplaylist.addEventListener('click', getCurPlay);
 
-    document.getElementById("clevelist").addEventListener('click', closeEvenMenu);
+    document.getElementById("creaEveFunc").addEventListener('click', function(){creaEveFuncC("evelist")});
+    document.getElementById("doneIn").addEventListener('click', accessDB);
+    document.getElementById("clevelist").addEventListener('click', function(){closeEvenMenu("evelist")});
     
 });
