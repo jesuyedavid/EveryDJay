@@ -9,12 +9,13 @@
 
     <body>
         <div id="djIDform">
-             <form id="inviteID" action="" method="POST">
-                 DJ ID: <input type="text" name="djID">
-                 DJ Username: <input type="text" name="djUsername">
-                 <text id="demo"></text>
-                 <input type="submit" name="getdjID" id="getdjID" value="Login">
-             </form>
+             <div id="inviteID" >
+                 DJ ID: <input type="text" id="djID">
+                 DJ password: <input type="text" id="djpas">
+                 <input type="submit" id="getdjID" value="Login">
+             </div>
+             <a href="#" id="outdj" style="text-decoration: none; display:none">Logout</a>
+             <a id="noinput3"></a>
         </div>
 
         <div>

@@ -106,13 +106,84 @@ createDone=()=>{
     document.getElementById('evelist').style.display="none";
 }
 
+loginDJ=async()=>{
+    var djID=document.getElementById("djID").value;
+    var djpas=document.getElementById("djpas").value;
+
+
+    
+    var found=false;
+    if(djID == "" || djpas==""){
+        document.getElementById("noinput3").innerHTML = "<p>Please fill all inputs</p>";
+        return;
+    }else{
+    
+        const endpoint='https://everydjay-a275.restdb.io/rest/alldjsonfile';
+        try{
+          const response=await fetch(endpoint,{
+            method:'GET',
+            headers:{
+                        'Content-type': 'application/json',
+                        'apikey': "5b1e107f46624c7b24444db4"
+                        //'apikey': "526376de89203f9f9644c5da4f07cbd3b847f"
+                    }
+          });
+          if(response.ok){
+            const jsonResponse=await response.json();
+            for (var i = 0; i < jsonResponse.length; i++) { 
+                if(jsonResponse[i].djid==djID && jsonResponse[i].djpassword==djpas){
+                    //persistence on page refresh
+                    localStorage.setItem("djID", djID);
+                    localStorage.setItem("djpass", djpas);
+                    found=true;
+                    document.getElementById("inviteID").style.display="none";
+                    document.getElementById("noinput3").innerHTML = `<p>Welcome:
+                     ${djID} </p>`
+                    document.getElementById('outdj').style.display="block";
+                    return;
+                    //djs can now login and register
+                }
+            }
+            if(!found){
+                document.getElementById("noinput3").innerHTML = "<p>User not found in our records</p>";
+                return;
+            }
+
+            
+          }
+        }
+        catch(error){
+          console.log(error);
+        }
+    }
+
+}
+
+logoutDJ=()=>{
+    djID=null;
+    localStorage.setItem("djID", djID);
+    location.reload();//reload page
+}
+
+checkLoggedIn=()=>{
+    if(localStorage.getItem("djID")!="null"){
+        document.getElementById("inviteID").style.display="none";
+        document.getElementById("noinput3").innerHTML = `<p>Welcome: ${localStorage.getItem("djID")} </p>`
+        document.getElementById('outdj').style.display="block";
+    }
+}
 //to run our predefined functions
 //after page has loaded
 $(document).ready(function() {
+
+    checkLoggedIn();
     document.getElementById("creaEveFunc").addEventListener('click', function(){creaEveFuncC("evelist")});
     document.getElementById("creadjID").addEventListener('click', function(){creaEveFuncC("newuser")});
     document.getElementById("doneIn").addEventListener('click', accessDB);
     document.getElementById("clevelist").addEventListener('click', function(){closeEvenMenu("evelist")});
     document.getElementById("clreg").addEventListener('click', function(){closeEvenMenu("newuser")});
     document.getElementById("finreg").addEventListener('click', regNewUser);
+    document.getElementById("getdjID").addEventListener('click', loginDJ);
+    document.getElementById("outdj").addEventListener('click', logoutDJ);
 });
+
